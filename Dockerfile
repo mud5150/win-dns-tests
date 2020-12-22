@@ -7,5 +7,7 @@ RUN powershell.exe -Command `
     Set-ExecutionPolicy Bypass -Scope Process -Force; `
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); `
-    choco install git golang -y
+    choco install git golang -y; `
+    [Environment]::SetEnvironmentVariable('AD_DOMAIN', 'example.com',[System.EnvironmentVariableTarget]::Machine); `
+    Add-DnsServerPrimaryZone -name example.com -ZoneFile zone.example.com
 ENTRYPOINT [ "powershell.exe" ]
