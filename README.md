@@ -9,8 +9,8 @@ Running `go get -d github.com/StackExchange/dnscontrol` will hence place the int
 `C:\Users\ContainerAdministrator\go\src\github.com\StackExchange\dnscontrol\integrationTest`
 
 ## Subtle weirdness
-If you attempt to use the `AD_SERVER` environment variable in the docker command it must be escaped with a backtick '`' 
-so that it's not evaluated until the entrypoint script runs. This variable, as well as the example.com dns zone 
+If you attempt to use the `AD_SERVER` environment variable in the docker command, it must be escaped with a backtick '`' 
+so that it's not evaluated until the entrypoint script runs. This variable, as well as the example.com dns zone, 
 must be created at runtime since the server name changes for each container instance. 
 
 ## Running in docker
