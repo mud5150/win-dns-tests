@@ -24,3 +24,12 @@ And passing a command
 
 And finally interactively  
 ```docker run --rm -it mud5150/win-dns:latest powershell```
+
+## Running in ACI
+I am attempting to leverage Azure ACI since github actions doesn't support running windows containers. 
+
+To run on ACI  
+```az container create --resource-group <resource_group_name> --name <instance_name> --image mud5150/win-dns --os-type windows --cpu 2 --memory 4```
+
+To connect to shell. `exec` does appear to *work* with windows containers, but the screen draw is pretty flaky.  
+```az container exec -g <resource_group_name> --name <instance_name> --container-name <instance_name> --exec-command "powershell"```
