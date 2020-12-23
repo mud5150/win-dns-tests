@@ -8,6 +8,7 @@ RUN powershell.exe -Command `
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); `
     choco install git golang -y; `
-    [Environment]::SetEnvironmentVariable('AD_DOMAIN', 'example.com',[System.EnvironmentVariableTarget]::Machine); `
-    Add-DnsServerPrimaryZone -name example.com -ZoneFile zone.example.com
-ENTRYPOINT [ "powershell.exe" ]
+    [Environment]::SetEnvironmentVariable('AD_DOMAIN', 'example.com',[System.EnvironmentVariableTarget]::Machine)
+ADD entrypoint.ps1 c:/
+ENTRYPOINT [ "powershell.exe", "-Command", "c:/entrypoint.ps1"]
+CMD [ "sleep", "3600" ]
