@@ -1,6 +1,8 @@
 # win-dns-test
 This is a windows dns server container intended to be used for integration tests. The container is setup with the required environment variables for DNSControl integration testing. 
 
+The `repo_packed` tag was build to include DNSControl source with `go get -d`
+
 ## Dependencies info
 GOPATH is: `C:\Users\ContainerAdministrator\go\`
 Running `go get -d github.com/StackExchange/dnscontrol` will hence place the integration tests at 

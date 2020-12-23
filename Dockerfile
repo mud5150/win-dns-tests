@@ -9,6 +9,7 @@ RUN powershell.exe -Command `
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); `
     choco install git golang -y; `
     [Environment]::SetEnvironmentVariable('AD_DOMAIN', 'example.com',[System.EnvironmentVariableTarget]::Machine)
+RUN go get -d github.com/StackExchange/dnscontrol
 ADD entrypoint.ps1 c:/
 ENTRYPOINT [ "powershell.exe", "-Command", "c:/entrypoint.ps1"]
 CMD [ "sleep", "3600" ]
